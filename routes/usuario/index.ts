@@ -93,13 +93,13 @@ routerUsuario.post('/login', jsonParser, async (req: any, res: any) => {
             where: { correo: email }
         })
         if (!resultados) {
-            return res.status(400).send({ message: 'Usuario no encontrado' });
+            return res.status(400).json({ message: 'Usuario no encontrado' });
         }
-        //console.log(resultados)
+      //console.log(resultados)
        if (resultados.password == password) {
-            return res.status(200).send({ message: 'Login exitoso' });
+            return res.status(200).json({ message: 'Login exitoso' });
         } else {
-            return res.status(400).send({ message: 'Contraseña incorrecta' });
+            return res.status(400).json({ message: 'Contraseña incorrecta' });
         }
     } catch (error) {
         //console.log(error);

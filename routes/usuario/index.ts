@@ -65,8 +65,7 @@ routerUsuario.put('', jsonParser, async (req: any, res: any) => {
         console.log(error);
         res.status(500).json({ message: "Error interno" });
       }
-}
-);
+});
 
 routerUsuario.delete('', jsonParser, async (req: any, res: any) => {
     try {
@@ -84,7 +83,28 @@ routerUsuario.delete('', jsonParser, async (req: any, res: any) => {
         console.log(error);
         res.status(500).json({ message: "Error interno" });
       }
-}
-);
+});
+
+routerUsuario.post('/login', jsonParser, async (req: any, res: any) => {
+    const { email, password } = req.body
+
+    try {
+        const resultados = await usuario.findOne({
+            where: { correo: email }
+        })
+        if (!resultados) {
+            return res.status(400).send({ message: 'Usuario no encontrado' });
+        }
+        //console.log(resultados)
+       if (resultados.password == password) {
+            return res.status(200).send({ message: 'Login exitoso' });
+        } else {
+            return res.status(400).send({ message: 'Contraseña incorrecta' });
+        }
+    } catch (error) {
+        //console.log(error);
+        res.status(500).json({ message: "Error interno" });
+    }
+})
 
 module.exports = routerUsuario;

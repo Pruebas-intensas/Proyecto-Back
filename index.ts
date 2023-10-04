@@ -10,7 +10,7 @@ const port = process.env.PORT;
 
 
 const corsOptions = {
-  origin: ["*"],
+  origin: ["*"]
 };
 
 app.use(cors(corsOptions));

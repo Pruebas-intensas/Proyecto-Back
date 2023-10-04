@@ -1,21 +1,21 @@
 export { };
 
-const { admin } = require('../../models');
+const { usuario } = require('../../models');
 const { Router } = require('express');
-const routerAdmin = new Router();
+const routerUsuario = new Router();
 
 
 var bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
 
-routerAdmin.get('', jsonParser, async (req: any, res: any) => {
+routerUsuario.get('', jsonParser, async (req: any, res: any) => {
     try {
         if (!("id" in req.query)) {
           res.status(406).json({ message: "Se requiere ingresar id" });
           return;
         }
-        const data = await admin.findOne({
+        const data = await usuario.findOne({
           where: {
             id: req.query.id
           }
@@ -28,9 +28,9 @@ routerAdmin.get('', jsonParser, async (req: any, res: any) => {
       }
 });
 
-routerAdmin.get('/all', jsonParser, async (req: any, res: any) => {
+routerUsuario.get('/all', jsonParser, async (req: any, res: any) => {
   try {
-      const data = await admin.findAll();
+      const data = await usuario.findAll();
       console.log(data)
       res.status(200).json(data);
     } catch (error) {
@@ -39,9 +39,9 @@ routerAdmin.get('/all', jsonParser, async (req: any, res: any) => {
     }
 });
 
-routerAdmin.post('', jsonParser, async (req: any, res: any) => {
+routerUsuario.post('', jsonParser, async (req: any, res: any) => {
     try {
-        const data = await admin.create(req.body);
+        const data = await usuario.create(req.body);
         res.status(201).json(data);
       } catch (error) {
         console.log(error);
@@ -49,13 +49,13 @@ routerAdmin.post('', jsonParser, async (req: any, res: any) => {
       }
 });
 
-routerAdmin.put('', jsonParser, async (req: any, res: any) => {
+routerUsuario.put('', jsonParser, async (req: any, res: any) => {
     try {
         if (!("id" in req.query)) {
           res.status(406).json({ message: "Se requiere ingresar id" });
           return;
         }
-        const data = await admin.update(req.body, {
+        const data = await usuario.update(req.body, {
           where: {
             id: req.query.id
           }
@@ -68,13 +68,13 @@ routerAdmin.put('', jsonParser, async (req: any, res: any) => {
 }
 );
 
-routerAdmin.delete('', jsonParser, async (req: any, res: any) => {
+routerUsuario.delete('', jsonParser, async (req: any, res: any) => {
     try {
         if (!("id" in req.query)) {
           res.status(406).json({ message: "Se requiere ingresar id" });
           return;
         }
-        const data = await admin.destroy({
+        const data = await usuario.destroy({
           where: {
             id: req.query.id
           }
@@ -87,4 +87,4 @@ routerAdmin.delete('', jsonParser, async (req: any, res: any) => {
 }
 );
 
-module.exports = routerAdmin;
+module.exports = routerUsuario;

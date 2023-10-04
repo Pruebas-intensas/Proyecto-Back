@@ -1,21 +1,21 @@
 export { };
 
-const { admin } = require('../../models');
+const { oferta } = require('../../models');
 const { Router } = require('express');
-const routerAdmin = new Router();
+const routerOferta = new Router();
 
 
 var bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
 
-routerAdmin.get('', jsonParser, async (req: any, res: any) => {
+routerOferta.get('', jsonParser, async (req: any, res: any) => {
     try {
         if (!("id" in req.query)) {
           res.status(406).json({ message: "Se requiere ingresar id" });
           return;
         }
-        const data = await admin.findOne({
+        const data = await oferta.findOne({
           where: {
             id: req.query.id
           }
@@ -28,9 +28,9 @@ routerAdmin.get('', jsonParser, async (req: any, res: any) => {
       }
 });
 
-routerAdmin.get('/all', jsonParser, async (req: any, res: any) => {
+routerOferta.get('/all', jsonParser, async (req: any, res: any) => {
   try {
-      const data = await admin.findAll();
+      const data = await oferta.findAll();
       console.log(data)
       res.status(200).json(data);
     } catch (error) {
@@ -39,9 +39,9 @@ routerAdmin.get('/all', jsonParser, async (req: any, res: any) => {
     }
 });
 
-routerAdmin.post('', jsonParser, async (req: any, res: any) => {
+routerOferta.post('', jsonParser, async (req: any, res: any) => {
     try {
-        const data = await admin.create(req.body);
+        const data = await oferta.create(req.body);
         res.status(201).json(data);
       } catch (error) {
         console.log(error);
@@ -49,13 +49,13 @@ routerAdmin.post('', jsonParser, async (req: any, res: any) => {
       }
 });
 
-routerAdmin.put('', jsonParser, async (req: any, res: any) => {
+routerOferta.put('', jsonParser, async (req: any, res: any) => {
     try {
         if (!("id" in req.query)) {
           res.status(406).json({ message: "Se requiere ingresar id" });
           return;
         }
-        const data = await admin.update(req.body, {
+        const data = await oferta.update(req.body, {
           where: {
             id: req.query.id
           }
@@ -68,13 +68,13 @@ routerAdmin.put('', jsonParser, async (req: any, res: any) => {
 }
 );
 
-routerAdmin.delete('', jsonParser, async (req: any, res: any) => {
+routerOferta.delete('', jsonParser, async (req: any, res: any) => {
     try {
         if (!("id" in req.query)) {
           res.status(406).json({ message: "Se requiere ingresar id" });
           return;
         }
-        const data = await admin.destroy({
+        const data = await oferta.destroy({
           where: {
             id: req.query.id
           }
@@ -87,4 +87,4 @@ routerAdmin.delete('', jsonParser, async (req: any, res: any) => {
 }
 );
 
-module.exports = routerAdmin;
+module.exports = routerOferta;

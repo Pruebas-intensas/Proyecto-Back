@@ -11,6 +11,20 @@ module.exports = {
       },
       monto: {
         type: Sequelize.INTEGER
+      },
+      id_producto: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'producto',
+          key: 'id'
+        }
+      },
+      id_usuario: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'usuario',
+          key: 'id'
+        }
       }
     });
   },

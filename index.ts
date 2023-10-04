@@ -14,6 +14,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use("/", require("./routes"));
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Express + TypeScript Server');

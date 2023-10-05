@@ -16,14 +16,16 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: 'producto',
-          key: 'id'
+          key: 'id',
+          onDelete: 'CASCADE'
         }
       },
       id_usuario: {
         type: Sequelize.INTEGER,
         references: {
           model: 'usuario',
-          key: 'id'
+          key: 'id',
+          onDelete: 'CASCADE'
         }
       }
     });

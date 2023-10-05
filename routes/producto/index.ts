@@ -1,6 +1,6 @@
 export { };
 
-const { producto } = require('../../models');
+const { producto, oferta } = require('../../models');
 const { Router } = require('express');
 const routerProducto = new Router();
 
@@ -18,8 +18,11 @@ routerProducto.get('', jsonParser, async (req: any, res: any) => {
         const data = await producto.findOne({
           where: {
             id: req.query.id
-          }
+          },
+          include: [{model: oferta, as: 'ofertas'}]
         });
+
+        data.ofertas.sort((a: any, b: any) => b.monto - a.monto);
         console.log(data)
         res.status(200).json(data);
       } catch (error) {

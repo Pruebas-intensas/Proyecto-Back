@@ -17,7 +17,10 @@ module.exports = {
       },
       descripcion: {
         type: Sequelize.STRING
-      }
+      },
+      fecha_termino: {
+        type: Sequelize.DATE
+      },
     });
   },
   async down(queryInterface, Sequelize) {

@@ -33,7 +33,13 @@ routerProducto.get('', jsonParser, async (req: any, res: any) => {
 
 routerProducto.get('/all', jsonParser, async (req: any, res: any) => {
   try {
-      const data = await producto.findAll();
+      const data = await producto.findAll({
+        include: [{model: oferta, as: 'ofertas'}]
+      });
+      // sort all ofertas by monto
+      data.forEach((element: any) => {
+        element.ofertas.sort((a: any, b: any) => b.monto - a.monto);
+      });
       console.log(data)
       res.status(200).json(data);
     } catch (error) {

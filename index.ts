@@ -1,4 +1,5 @@
-import express, { Express, Request, Response } from 'express';
+const express = require('express');
+import { Express, Request, Response} from 'express';
 import dotenv from 'dotenv';
 
 const cors = require('cors');
@@ -40,3 +41,5 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.listen(parseInt(port || ""), "0.0.0.0", () => { console.log("Running on port " + port || "")});
+
+export default app;

@@ -7,7 +7,7 @@
     "build": "npx tsc",
     "start": "node dist/index.js",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -r esm 'test/**/*.spec.js' --require ts-node/register"
   },
   "keywords": [],
   "author": "",
@@ -23,8 +23,14 @@
   "devDependencies": {
     "@types/express": "^4.17.18",
     "@types/node": "^20.8.2",
+    "chai": "^4.3.10",
+    "chai-http": "^4.4.0",
     "concurrently": "^8.2.1",
+    "esm": "^3.2.25",
+    "mocha": "^10.2.0",
     "nodemon": "^3.0.1",
+    "supertest": "^6.3.3",
+    "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   }
 }

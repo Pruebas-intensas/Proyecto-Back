@@ -14,6 +14,9 @@ module.exports = {
       },
       precio_minimo: {
         type: Sequelize.INTEGER
+      },
+      descripcion: {
+        type: Sequelize.STRING
       }
     });
   },

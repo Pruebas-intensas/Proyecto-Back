@@ -20,10 +20,10 @@ routerUsuario.get('', jsonParser, async (req: any, res: any) => {
             id: req.query.id
           }
         });
-        console.log(data)
+        //console.log(data)
         res.status(200).json(data);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.status(500).json({ message: "Error interno" });
       }
 });
@@ -31,10 +31,10 @@ routerUsuario.get('', jsonParser, async (req: any, res: any) => {
 routerUsuario.get('/all', jsonParser, async (req: any, res: any) => {
   try {
       const data = await usuario.findAll();
-      console.log(data)
+      //console.log(data)
       res.status(200).json(data);
     } catch (error) {
-      console.log(error);
+      //console.log(error);
       res.status(500).json({ message: "Error interno" });
     }
 });
@@ -44,7 +44,7 @@ routerUsuario.post('', jsonParser, async (req: any, res: any) => {
         const data = await usuario.create(req.body);
         res.status(201).json(data);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.status(500).json({ message: "Error interno" });
       }
 });
@@ -62,7 +62,7 @@ routerUsuario.put('', jsonParser, async (req: any, res: any) => {
         });
         res.status(200).json(data);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.status(500).json({ message: "Error interno" });
       }
 });
@@ -80,7 +80,7 @@ routerUsuario.delete('', jsonParser, async (req: any, res: any) => {
         });
         res.status(200).json(data);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.status(500).json({ message: "Error interno" });
       }
 });
@@ -95,14 +95,14 @@ routerUsuario.post('/login', jsonParser, async (req: any, res: any) => {
         if (!resultados) {
             return res.status(400).json({ message: 'Usuario no encontrado' });
         }
-      //console.log(resultados)
+      ////console.log(resultados)
        if (resultados.password == password) {
             return res.status(200).json({ message: 'Login exitoso' });
         } else {
             return res.status(400).json({ message: 'Contraseña incorrecta' });
         }
     } catch (error) {
-        //console.log(error);
+        ////console.log(error);
         res.status(500).json({ message: "Error interno" });
     }
 })

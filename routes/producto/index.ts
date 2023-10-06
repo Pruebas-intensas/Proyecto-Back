@@ -21,12 +21,19 @@ routerProducto.get('', jsonParser, async (req: any, res: any) => {
           },
           include: [{model: oferta, as: 'ofertas'}]
         });
-
+        if(data == null){
+          res.status(404).json({ message: "Producto no encontrado" });
+          return;
+        }
+        if(!data.hasOwnProperty('ofertas') || data.ofertas == null){
+          res.status(404).json({ message: "Producto no tiene ofertas" });
+          return;
+        }
         data.ofertas.sort((a: any, b: any) => b.monto - a.monto);
-        console.log(data)
+        //console.log(data)
         res.status(200).json(data);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.status(500).json({ message: "Error interno" });
       }
 });
@@ -37,13 +44,19 @@ routerProducto.get('/all', jsonParser, async (req: any, res: any) => {
         include: [{model: oferta, as: 'ofertas'}]
       });
       // sort all ofertas by monto
+      if(data == null){
+        res.status(404).json({ message: "No hay productos" });
+        return;
+      }
       data.forEach((element: any) => {
-        element.ofertas.sort((a: any, b: any) => b.monto - a.monto);
+        if(element.hasOwnProperty('ofertas') && element.ofertas != null){
+          element.ofertas.sort((a: any, b: any) => b.monto - a.monto);
+        }
       });
-      console.log(data)
+      //console.log(data)
       res.status(200).json(data);
     } catch (error) {
-      console.log(error);
+      //console.log(error);
       res.status(500).json({ message: "Error interno" });
     }
 });
@@ -53,7 +66,7 @@ routerProducto.post('', jsonParser, async (req: any, res: any) => {
         const data = await producto.create(req.body);
         res.status(201).json(data);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.status(500).json({ message: "Error interno" });
       }
 });
@@ -69,9 +82,13 @@ routerProducto.put('', jsonParser, async (req: any, res: any) => {
             id: req.query.id
           }
         });
+        if(data == null){
+          res.status(404).json({ message: "Producto no encontrado" });
+          return;
+        }
         res.status(200).json(data);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.status(500).json({ message: "Error interno" });
       }
 }
@@ -90,7 +107,7 @@ routerProducto.delete('', jsonParser, async (req: any, res: any) => {
         });
         res.status(200).json(data);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.status(500).json({ message: "Error interno" });
       }
 }

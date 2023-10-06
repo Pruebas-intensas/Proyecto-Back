@@ -20,10 +20,14 @@ routerAdmin.get('', jsonParser, async (req: any, res: any) => {
             id: req.query.id
           }
         });
-        console.log(data)
+        if(data == null){
+          res.status(404).json({ message: "Admin no encontrado" });
+          return;
+        }
+        //console.log(data)
         res.status(200).json(data);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.status(500).json({ message: "Error interno" });
       }
 });
@@ -31,10 +35,10 @@ routerAdmin.get('', jsonParser, async (req: any, res: any) => {
 routerAdmin.get('/all', jsonParser, async (req: any, res: any) => {
   try {
       const data = await admin.findAll();
-      console.log(data)
+      //console.log(data)
       res.status(200).json(data);
     } catch (error) {
-      console.log(error);
+      //console.log(error);
       res.status(500).json({ message: "Error interno" });
     }
 });
@@ -44,7 +48,7 @@ routerAdmin.post('', jsonParser, async (req: any, res: any) => {
         const data = await admin.create(req.body);
         res.status(201).json(data);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.status(500).json({ message: "Error interno" });
       }
 });
@@ -62,7 +66,7 @@ routerAdmin.put('', jsonParser, async (req: any, res: any) => {
         });
         res.status(200).json(data);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.status(500).json({ message: "Error interno" });
       }
 }
@@ -81,7 +85,7 @@ routerAdmin.delete('', jsonParser, async (req: any, res: any) => {
         });
         res.status(200).json(data);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.status(500).json({ message: "Error interno" });
       }
 }

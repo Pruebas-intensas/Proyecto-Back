@@ -21,6 +21,10 @@ jobs:
         with:
           node-version: '18.x'
 
+      - name: Copy env file
+        run: |
+          echo "${{ secrets.ENV_FILE }}" > .env
+
       - name: npm install, build, and test
         run: |
           npm install

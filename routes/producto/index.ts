@@ -61,6 +61,30 @@ routerProducto.get('/all', jsonParser, async (req: any, res: any) => {
     }
 });
 
+routerProducto.get('/all_usuario', jsonParser, async (req: any, res: any) => {
+  try {
+      const data = await producto.findAll({
+        // get all productos that have at least one oferta from the user, and bring all the ofertas, not just the ones from the user
+        include: [{model: oferta, as: 'ofertas', where: {id_usuario: req.query.id_usuario}, include: [{model: producto, as: 'producto', include: [{model: oferta, as: 'ofertas'}]}]}]
+      });
+      // sort all ofertas by monto
+      if(data == null){
+        res.status(404).json({ message: "No hay productos" });
+        return;
+      }
+      data.forEach((element: any) => {
+        if(element.hasOwnProperty('ofertas') && element.ofertas != null){
+          element.ofertas.sort((a: any, b: any) => b.monto - a.monto);
+        }
+      });
+      //console.log(data)
+      res.status(200).json(data);
+    } catch (error) {
+      //console.log(error);
+      res.status(500).json({ message: "Error interno" });
+    }
+});
+
 routerProducto.post('', jsonParser, async (req: any, res: any) => {
     try {
         const data = await producto.create(req.body);

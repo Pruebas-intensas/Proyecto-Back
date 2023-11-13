@@ -97,7 +97,7 @@ routerUsuario.post('/login', jsonParser, async (req: any, res: any) => {
         }
       ////console.log(resultados)
        if (resultados.password == password) {
-            return res.status(200).json({ message: 'Login exitoso', id: resultados.id, nombre: resultados.nombre});
+            return res.status(200).json({ message: 'Login exitoso', id: resultados.id, nombre: resultados.nombre, admin: resultados.admin});
         } else {
             return res.status(400).json({ message: 'Contraseña incorrecta' });
         }

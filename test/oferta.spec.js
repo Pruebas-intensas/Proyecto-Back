@@ -10,7 +10,7 @@ chai.should();
 
 describe('Test de obtener una oferta', () => {
   describe('GET oferta?id=1', () => {
-    it('GET 1 debería retornar 200 o 404, si es 200 debería retornar un body con un objeto', (done) => {
+    it('GET 1 oferta debería retornar 200 o 404, si es 200 debería retornar un body con un objeto', (done) => {
       chai.request(app)
         .get('/oferta?id=1')
         .end((err, res) => {
@@ -29,7 +29,7 @@ describe('Test de obtener una oferta', () => {
 
 describe('Test de obtener todas los ofertas', () => {
   describe('GET oferta/all', () => {
-    it('GET all debería retornar 200 y retornar un body con un arreglo', (done) => {
+    it('GET all ofertas debería retornar 200 y retornar un body con un arreglo', (done) => {
       chai.request(app)
         .get('/oferta/all')
         .end((err, res) => {
@@ -46,7 +46,7 @@ describe('Test de obtener todas los ofertas', () => {
 let id_creado = 0;
 describe('Test de crear una oferta', () => {
   describe('POST oferta', () => {
-    it('POST debería retornar 201 y retornar un body con un objeto y propiedad id', (done) => {
+    it('POST oferta debería retornar 201 y retornar un body con un objeto y propiedad id', (done) => {
       chai.request(app)
         .post('/oferta')
         .send({
@@ -65,7 +65,7 @@ describe('Test de crear una oferta', () => {
 
 
 describe('GET oferta recien creada', () => {
-  it('GET 1 (despues de POST) debería retornar 200 y retornar un body con un objeto y id igual al creado', (done) => {
+  it('GET 1 oferta (despues de POST) debería retornar 200 y retornar un body con un objeto y id igual al creado', (done) => {
     chai.request(app)
       .get(`/oferta?id=${id_creado}`)
       .end((err, res) => {
@@ -81,7 +81,7 @@ describe('GET oferta recien creada', () => {
 
 describe('Test de actualizar un oferta', () => {
   describe('PUT oferta', () => {
-    it('PUT debería retornar 200 y retornar un body con un objeto y propiedad id', (done) => {
+    it('PUT oferta debería retornar 200 y retornar un body con un objeto y propiedad id', (done) => {
       chai.request(app)
         .put(`/oferta?id=${id_creado}`)
         .send({
@@ -113,7 +113,7 @@ describe('Test de actualizar un oferta', () => {
 
 describe('Test de eliminar un oferta', () => {
   describe('DELETE oferta', () => {
-    it('DELETE debería retornar 200 y retornar un body con un objeto y propiedad id', (done) => {
+    it('DELETE oferta debería retornar 200 y retornar un body con un objeto y propiedad id', (done) => {
       chai.request(app)
         .delete(`/oferta?id=${id_creado}`)
         .end((err, res) => {

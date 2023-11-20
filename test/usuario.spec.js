@@ -10,7 +10,7 @@ chai.should();
 
 describe('Test de obtener un usuario', () => {
   describe('GET usuario?id=1', () => {
-    it('GET 1 debería retornar 200 o 404, si es 200 debería retornar un body con un objeto', (done) => {
+    it('GET 1 usuario debería retornar 200 o 404, si es 200 debería retornar un body con un objeto', (done) => {
       chai.request(app)
         .get('/usuario?id=1')
         .end((err, res) => {
@@ -29,7 +29,7 @@ describe('Test de obtener un usuario', () => {
 
 describe('Test de obtener todos los usuarios', () => {
   describe('GET usuario/all', () => {
-    it('GET all debería retornar 200 y retornar un body con un arreglo', (done) => {
+    it('GET all usuario debería retornar 200 y retornar un body con un arreglo', (done) => {
       chai.request(app)
         .get('/usuario/all')
         .end((err, res) => {
@@ -46,7 +46,7 @@ describe('Test de obtener todos los usuarios', () => {
 let id_creado = 0;
 describe('Test de crear un usuario', () => {
   describe('POST usuario', () => {
-    it('POST debería retornar 201 y retornar un body con un objeto y propiedad id', (done) => {
+    it('POST usuario debería retornar 201 y retornar un body con un objeto y propiedad id', (done) => {
       chai.request(app)
         .post('/usuario')
         .send({
@@ -67,7 +67,7 @@ describe('Test de crear un usuario', () => {
 
 
 describe('GET usuario recien creado', () => {
-  it('GET 1 (despues de POST) debería retornar 200 y retornar un body con un objeto y id igual al creado', (done) => {
+  it('GET 1 usuario (despues de POST) debería retornar 200 y retornar un body con un objeto y id igual al creado', (done) => {
     chai.request(app)
       .get(`/usuario?id=${id_creado}`)
       .end((err, res) => {
@@ -83,7 +83,7 @@ describe('GET usuario recien creado', () => {
 
 describe('Test de actualizar un usuario', () => {
   describe('PUT usuario', () => {
-    it('PUT debería retornar 200 y retornar un body con un objeto y propiedad id', (done) => {
+    it('PUT usuario debería retornar 200 y retornar un body con un objeto y propiedad id', (done) => {
       chai.request(app)
         .put(`/usuario?id=${id_creado}`)
         .send({
@@ -119,7 +119,7 @@ describe('Test de actualizar un usuario', () => {
 
 describe('Test de eliminar un usuario', () => {
   describe('DELETE usuario', () => {
-    it('DELETE debería retornar 200 y retornar un body con un objeto y propiedad id', (done) => {
+    it('DELETE usuario debería retornar 200 y retornar un body con un objeto y propiedad id', (done) => {
       chai.request(app)
         .delete(`/usuario?id=${id_creado}`)
         .end((err, res) => {

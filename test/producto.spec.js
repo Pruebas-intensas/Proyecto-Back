@@ -10,7 +10,7 @@ chai.should();
 
 describe('Test de obtener un producto', () => {
   describe('GET producto?id=1', () => {
-    it('GET 1 debería retornar 200 o 404, si es 200 debería retornar un body con un objeto', (done) => {
+    it('GET 1 producto debería retornar 200 o 404, si es 200 debería retornar un body con un objeto', (done) => {
       chai.request(app)
         .get('/producto?id=1')
         .end((err, res) => {
@@ -29,7 +29,7 @@ describe('Test de obtener un producto', () => {
 
 describe('Test de obtener todos los productos', () => {
   describe('GET producto/all', () => {
-    it('GET all debería retornar 200 y retornar un body con un arreglo', (done) => {
+    it('GET all productos debería retornar 200 y retornar un body con un arreglo', (done) => {
       chai.request(app)
         .get('/producto/all')
         .end((err, res) => {
@@ -46,7 +46,7 @@ describe('Test de obtener todos los productos', () => {
 let id_creado = 0;
 describe('Test de crear un producto', () => {
   describe('POST producto', () => {
-    it('POST debería retornar 201 y retornar un body con un objeto y propiedad id', (done) => {
+    it('POST producto debería retornar 201 y retornar un body con un objeto y propiedad id', (done) => {
       chai.request(app)
         .post('/producto')
         .send({
@@ -68,7 +68,7 @@ describe('Test de crear un producto', () => {
 
 
 describe('GET producto recien creado', () => {
-  it('GET 1 (despues de POST) debería retornar 200 y retornar un body con un objeto y id igual al creado', (done) => {
+  it('GET 1 producto (despues de POST) debería retornar 200 y retornar un body con un objeto y id igual al creado', (done) => {
     chai.request(app)
       .get(`/producto?id=${id_creado}`)
       .end((err, res) => {
@@ -84,7 +84,7 @@ describe('GET producto recien creado', () => {
 
 describe('Test de actualizar un producto', () => {
   describe('PUT producto', () => {
-    it('PUT debería retornar 200 y retornar un body con un objeto y propiedad id', (done) => {
+    it('PUT producto debería retornar 200 y retornar un body con un objeto y propiedad id', (done) => {
       chai.request(app)
         .put(`/producto?id=${id_creado}`)
         .send({
@@ -122,7 +122,7 @@ describe('Test de actualizar un producto', () => {
 
 describe('Test de eliminar un producto', () => {
   describe('DELETE producto', () => {
-    it('DELETE debería retornar 200 y retornar un body con un objeto y propiedad id', (done) => {
+    it('DELETE producto debería retornar 200 y retornar un body con un objeto y propiedad id', (done) => {
       chai.request(app)
         .delete(`/producto?id=${id_creado}`)
         .end((err, res) => {

@@ -10,7 +10,7 @@ chai.should();
 
 describe('Test de obtener un admin', () => {
   describe('GET admin?id=1', () => {
-    it('GET 1 debería retornar 200 o 404, si es 200 debería retornar un body con un objeto', (done) => {
+    it('GET 1 admin debería retornar 200 o 404, si es 200 debería retornar un body con un objeto', (done) => {
       chai.request(app)
         .get('/admin?id=1')
         .end((err, res) => {
@@ -30,7 +30,7 @@ describe('Test de obtener un admin', () => {
 
 describe('Test de obtener todos los admins', () => {
   describe('GET admin/all', () => {
-    it('GET all debería retornar 200 y retornar un body con un arreglo', (done) => {
+    it('GET all admins debería retornar 200 y retornar un body con un arreglo', (done) => {
       chai.request(app)
         .get('/admin/all')
         .end((err, res) => {
@@ -47,7 +47,7 @@ describe('Test de obtener todos los admins', () => {
 let id_creado = 0;
 describe('Test de crear un admin', () => {
   describe('POST admin', () => {
-    it('POST debería retornar 201 y retornar un body con un objeto y propiedad id', (done) => {
+    it('POST admin debería retornar 201 y retornar un body con un objeto y propiedad id', (done) => {
       chai.request(app)
         .post('/admin')
         .send({
@@ -68,7 +68,7 @@ describe('Test de crear un admin', () => {
 
 
 describe('GET admin recien creado', () => {
-  it('GET 1 (despues de POST) debería retornar 200 y retornar un body con un objeto y id igual al creado', (done) => {
+  it('GET 1 admin (despues de POST) debería retornar 200 y retornar un body con un objeto y id igual al creado', (done) => {
     chai.request(app)
       .get(`/admin?id=${id_creado}`)
       .end((err, res) => {
@@ -84,7 +84,7 @@ describe('GET admin recien creado', () => {
 
 describe('Test de actualizar un admin', () => {
   describe('PUT admin', () => {
-    it('PUT debería retornar 200 y retornar un body con un objeto y propiedad id', (done) => {
+    it('PUT admin debería retornar 200 y retornar un body con un objeto y propiedad id', (done) => {
       chai.request(app)
         .put(`/admin?id=${id_creado}`)
         .send({
@@ -120,7 +120,7 @@ describe('Test de actualizar un admin', () => {
 
 describe('Test de eliminar un admin', () => {
   describe('DELETE admin', () => {
-    it('DELETE debería retornar 200 y retornar un body con un objeto y propiedad id', (done) => {
+    it('DELETE admin debería retornar 200 y retornar un body con un objeto y propiedad id', (done) => {
       chai.request(app)
         .delete(`/admin?id=${id_creado}`)
         .end((err, res) => {

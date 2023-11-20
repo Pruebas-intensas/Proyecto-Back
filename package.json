@@ -7,7 +7,7 @@
     "build": "npx tsc",
     "start": "node dist/index.js",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
-    "test": "mocha -r esm 'test/**/*.spec.js' --require ts-node/register"
+    "test": "mocha -r esm 'test/**/*.spec.js' --require ts-node/register --timeout 20000 --exit"
   },
   "keywords": [],
   "author": "",

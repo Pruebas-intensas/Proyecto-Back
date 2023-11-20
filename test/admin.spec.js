@@ -24,6 +24,7 @@ describe('Test de obtener un admin', () => {
           done();
         });
     });
+    after(async () => {});
   });
 });
 
@@ -40,6 +41,7 @@ describe('Test de obtener todos los admins', () => {
           done();
         });
     });
+    after(async () => {});
   });
 });
 
@@ -63,6 +65,7 @@ describe('Test de crear un admin', () => {
           done();
         });
     });
+    after(async () => {});
   }); 
 });
 
@@ -78,6 +81,7 @@ describe('GET admin recien creado', () => {
         res.body.id.should.be.eq(id_creado);
         done();
       });
+      after(async () => {});
   });
 });
 
@@ -114,6 +118,7 @@ describe('Test de actualizar un admin', () => {
           done();}, 1000);
         });
     });
+    after(async () => {});
   });
 });
 
@@ -138,5 +143,6 @@ describe('Test de eliminar un admin', () => {
           done();
         });
     });
+    after(async () => {});
   });
 });

@@ -23,6 +23,8 @@ describe('Test de obtener un usuario', () => {
           done();
         });
     });
+
+    after(async () => {});
   });
 });
 
@@ -39,6 +41,7 @@ describe('Test de obtener todos los usuarios', () => {
           done();
         });
     });
+    after(async () => {});
   });
 });
 
@@ -62,6 +65,7 @@ describe('Test de crear un usuario', () => {
           done();
         });
     });
+    after(async () => {});
   }); 
 });
 
@@ -77,6 +81,7 @@ describe('GET usuario recien creado', () => {
         res.body.id.should.be.eq(id_creado);
         done();
       });
+      after(async () => {});
   });
 });
 
@@ -113,6 +118,7 @@ describe('Test de actualizar un usuario', () => {
           done();}, 1000);
         });
     });
+    after(async () => {});
   });
 });
 
@@ -137,5 +143,6 @@ describe('Test de eliminar un usuario', () => {
           done();
         });
     });
+    after(async () => {});
   });
 });

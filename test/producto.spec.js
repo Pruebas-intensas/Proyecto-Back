@@ -23,6 +23,7 @@ describe('Test de obtener un producto', () => {
           done();
         });
     });
+    after(async () => {});
   });
 });
 
@@ -39,6 +40,7 @@ describe('Test de obtener todos los productos', () => {
           done();
         });
     });
+    after(async () => {});
   });
 });
 
@@ -63,6 +65,7 @@ describe('Test de crear un producto', () => {
           done();
         });
     });
+    after(async () => {});
   }); 
 });
 
@@ -78,6 +81,7 @@ describe('GET producto recien creado', () => {
         res.body.id.should.be.eq(id_creado);
         done();
       });
+      after(async () => {});
   });
 });
 
@@ -116,6 +120,7 @@ describe('Test de actualizar un producto', () => {
           done();}, 1000);
         });
     });
+    after(async () => {});
   });
 });
 
@@ -140,6 +145,7 @@ describe('Test de eliminar un producto', () => {
           done();
         });
     });
+    after(async () => {});
   });
 });
 

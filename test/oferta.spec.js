@@ -23,6 +23,7 @@ describe('Test de obtener una oferta', () => {
           done();
         });
     });
+    after(async () => {});
   });
 });
 
@@ -39,6 +40,7 @@ describe('Test de obtener todas los ofertas', () => {
           done();
         });
     });
+    after(async () => {});
   });
 });
 
@@ -60,6 +62,7 @@ describe('Test de crear una oferta', () => {
           done();
         });
     });
+    after(async () => {});
   }); 
 });
 
@@ -75,6 +78,7 @@ describe('GET oferta recien creada', () => {
         res.body.id.should.be.eq(id_creado);
         done();
       });
+      after(async () => {});
   });
 });
 
@@ -107,6 +111,7 @@ describe('Test de actualizar un oferta', () => {
           done();}, 1000);
         });
     });
+    after(async () => {});
   });
 });
 
@@ -131,6 +136,7 @@ describe('Test de eliminar un oferta', () => {
           done();
         });
     });
+    after(async () => {});
   });
 });
 
